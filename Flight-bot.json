@@ -1,0 +1,392 @@
+{
+  "intents": [
+    {
+      "intent": "domestic_flights",
+      "examples": [
+        {
+          "text": "2"
+        },
+        {
+          "text": "dom"
+        },
+        {
+          "text": "domestic flight"
+        },
+        {
+          "text": "domestic flights"
+        },
+        {
+          "text": "domestic flight schedule"
+        },
+        {
+          "text": "show me domestic flights"
+        },
+        {
+          "text": "upcoming domestic flights"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "hyderabad",
+      "examples": [
+        {
+          "text": "c"
+        },
+        {
+          "text": "Hyderabad"
+        },
+        {
+          "text": "hyderabad air"
+        },
+        {
+          "text": "hyderabad airport"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "international_flights",
+      "examples": [
+        {
+          "text": "1"
+        },
+        {
+          "text": "abroad flights"
+        },
+        {
+          "text": "flight to foreign countries"
+        },
+        {
+          "text": "international"
+        },
+        {
+          "text": "international flight"
+        },
+        {
+          "text": "international flights"
+        },
+        {
+          "text": "international plane"
+        },
+        {
+          "text": "show me international flights"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "mumbai",
+      "examples": [
+        {
+          "text": "a"
+        },
+        {
+          "text": "Mumbai"
+        },
+        {
+          "text": "mumbai airport"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "pune",
+      "examples": [
+        {
+          "text": "b"
+        },
+        {
+          "text": "Pune"
+        },
+        {
+          "text": "pune airport"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "selected_airports",
+      "examples": [
+        {
+          "text": "3"
+        },
+        {
+          "text": "airport"
+        },
+        {
+          "text": "airports"
+        },
+        {
+          "text": "list of airport"
+        },
+        {
+          "text": "select airport"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "digress_in": "does_not_return",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_2_1635073689391",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "international flights",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Here is the schedule for international flights:\nhttps://www.cleartrip.com/flight-schedule/flight-schedules-international.html"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1635070770749"
+      },
+      "conditions": "#international_flights",
+      "dialog_node": "node_1_1635071287313",
+      "previous_sibling": "node_2_1635070770749"
+    },
+    {
+      "type": "standard",
+      "title": "Mumbai",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Here is the schedule for Mumbai :\nhttps://www.mumbaiairport.com/csia-departures"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1635070770749"
+      },
+      "conditions": "#mumbai",
+      "dialog_node": "node_1_1635073684502",
+      "previous_sibling": "node_2_1635073613614"
+    },
+    {
+      "type": "standard",
+      "title": "Continue execution",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "",
+      "dialog_node": "node_2_1635070770749",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Pune",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Here is the schedule for Pune:\nhttps://www.puneairport.com/arrivals.php"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1635070770749"
+      },
+      "conditions": "#pune",
+      "dialog_node": "node_2_1635073613614",
+      "previous_sibling": "node_3_1635073205957"
+    },
+    {
+      "type": "standard",
+      "title": "Hyderabad",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Here is the schedule for Hyderabad airport:\nhttps://www.hyderabad.aero/live-flight-information.aspx"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1635070770749"
+      },
+      "conditions": "#hyderabad",
+      "dialog_node": "node_2_1635073689391",
+      "previous_sibling": "node_1_1635073684502"
+    },
+    {
+      "type": "standard",
+      "title": "domestic flights",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Here you can find the schedule for domestic flights:\nhttps://www.cleartrip.com/flight-schedule/flight-schedules-international.html"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1635070770749"
+      },
+      "conditions": "#domestic_flights",
+      "dialog_node": "node_3_1635071391726",
+      "previous_sibling": "node_1_1635071287313"
+    },
+    {
+      "type": "standard",
+      "title": "Select airport",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "a. Mumbai, b. Pune, c. Hyderabad"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1635070770749"
+      },
+      "conditions": "#selected_airports",
+      "dialog_node": "node_3_1635073205957",
+      "previous_sibling": "node_3_1635071391726"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello! What information do you want on flights?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Try, 1) International Flight Schedule, 2)Domestic Flight Schedule, 3)Flights from selected airport"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Flight Bot 2",
+  "language": "en",
+  "description": ""
+}
